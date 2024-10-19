@@ -1,0 +1,89 @@
+QLTK ..> (Đăng nhập)
+QLTK ..> (Đăng ký)
+QLTK ..> (Lấy lại mật khẩu)
+
+DC ..> (Thêm địa điểm vào \n danh sách yêu thích)
+DC ..> (Đặt chỗ)
+DC ..> (Hủy đặt chỗ)
+
+NTin ..> (Nhắn tin với chủ địa điểm)
+
+RV ..> (Viết bài đánh giá địa điểm)
+
+Customer --> (Cập nhật thông tin người dùng)
+
+QLTK ..> (Đăng nhập)
+QLTK ..> (Đăng ký)
+QLTK ..> (Lấy lại mật khẩu)
+
+QLDD ..> (Thêm địa điểm)
+QLDD ..> (Sửa địa điểm)
+QLDD ..> (Xóa địa điểm)
+
+TKBC ..> (Xuất báo cáo)
+TKBC ..> (Thống kê của nhà kinh doanh)
+TKBC ..> (Thống kê của địa điểm)
+TKBC ..> (Thống kê của hệ thống)
+
+CSKH ..> (Trả lời tin nhắn)
+CSKH ..> (Phản hồi đánh giá)
+
+QLTK ..> (Đăng nhập)
+QLTK ..> (Đăng ký)
+QLTK ..> (Lấy lại mật khẩu)
+
+QLDD ..> (Kiểm duyệt địa điểm)
+QLDD ..> (Sửa địa điểm)
+QLDD ..> (Xóa địa điểm)
+
+TKBC ..> (Xuất báo cáo)
+TKBC ..> (Thống kê của nhà kinh doanh)
+TKBC ..> (Thống kê của địa điểm)
+TKBC ..> (Thống kê của hệ thống)
+
+QLNKD ..> (Duyệt nhà kinh doanh)
+QLNKD ..> (Chỉnh sửa nhà kinh doanh)
+QLNKD ..> (Xóa nhà kinh doanh)
+
+QLLH ..> (Thêm loại hình)
+QLLH ..> (Chỉnh sửa loại hình)
+QLLH ..> (Xóa loại hình)
+
+
+Đăng nhập
+Đăng ký
+Lấy lại mật khẩu
+Thêm địa điểm vào danh sách yêu thích
+Đặt chỗ
+Hủy đặt chỗ
+Nhắn tin với chủ địa điểm
+Viết bài đánh giá địa điểm
+Cập nhật thông tin người dùng
+Đăng nhập
+Đăng ký
+Lấy lại mật khẩu
+Thêm địa điểm
+Sửa địa điểm
+Xóa địa điểm
+Xuất báo cáo
+Thống kê của nhà kinh doanh
+Thống kê của địa điểm
+Thống kê của hệ thống
+Trả lời tin nhắn
+Phản hồi đánh giá
+Đăng nhập
+Đăng ký
+Lấy lại mật khẩu
+Kiểm duyệt địa điểm
+Sửa địa điểm
+Xóa địa điểm
+Xuất báo cáo
+Thống kê của nhà kinh doanh
+Thống kê của địa điểm
+Thống kê của hệ thống
+Duyệt nhà kinh doanh
+Chỉnh sửa nhà kinh doanh
+Xóa nhà kinh doanh
+Thêm loại hình
+Chỉnh sửa loại hình
+Xóa loại hình

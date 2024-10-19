@@ -1,0 +1,19 @@
+@startuml
+title Hotel Room Booking State Diagram
+
+[*] --> Phòng_có_sẵn
+
+Phòng_có_sẵn --> Đặt_phòng : Đặt phòng
+Đặt_phòng -right-> Đã_thanh_toán : Thực hiện thanh toán
+Đã_thanh_toán --> [*]
+
+Đặt_phòng --> Hủy_phòng : Hủy đặt phòng
+Hủy_phòng --> [*]
+
+Đã_thanh_toán --> Đã_nhận_phòng : Check In
+Đã_nhận_phòng --> [*]
+
+Đã_nhận_phòng --> CheckedOut : Check Out
+CheckedOut --> [*]
+
+@enduml

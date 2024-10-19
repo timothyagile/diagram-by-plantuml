@@ -1,0 +1,18 @@
+@startuml
+title Hotel Room State Diagram
+
+State1: Phòng có sẵn
+State2: Đã được đặt
+State3: Đã bị hủy
+State4: Checkin thành công
+State5: Checkout thành công
+
+[*] --> State1
+State1-->State2
+State2-->State3
+State3-->State1
+State2-->State4
+State4-->State5
+State5-->State1
+
+@enduml

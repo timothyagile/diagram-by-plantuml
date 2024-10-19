@@ -1,0 +1,37 @@
+@startuml 
+actor :Khách hàng: as Customer
+left to right direction
+(Quản lý tài khoản) as QLTK
+(Đặt chỗ) as DC
+(Nhắn tin) as NTin 
+(Review địa điểm) as RV 
+(Quản lý thông tin) as QLTT
+
+
+Customer -->  QLTK
+QLTK ..> (Đăng nhập)
+QLTK ..> (Đăng ký)
+QLTK ..> (Lấy lại mật khẩu)
+
+Customer --> DC
+DC ..> (Thêm địa điểm vào \n danh sách yêu thích)
+DC ..> (Đặt chỗ)
+DC ..> (Hủy đặt chỗ)
+(Thanh toán) .up.> (Đặt chỗ)
+
+Customer --> NTin
+NTin ..> (Nhắn tin với chủ địa điểm)
+Customer --> RV 
+RV ..> (Viết bài \n đánh giá địa điểm)
+Customer --> QLTT
+(Cập nhật \n thông tin người dùng) as TTND
+QLTT ..> TTND
+(Email) .up.> TTND
+(SĐT)  .up.> TTND
+(Địa chỉ)  .up.> TTND
+(Password)  .up.> TTND
+
+
+@enduml
+
+

@@ -1,0 +1,35 @@
+@startuml
+title Hotel Booking Sequence Diagram
+
+actor "Khách hàng" as Customer
+participant "Giao diện đặt phòng" as BookingUI
+participant "Booking controller" as C_Booking
+participant "Room controller" as C_Room
+participant "Payment controller" as C_Payment
+participant "Database" as DB
+
+Customer -> BookingUI: 1. Gửi yêu cầu đặt phòng
+activate BookingUI
+
+BookingUI -> C_Booking: 2. Chuyển đổi yêu cầu
+activate C_Booking
+C_Booking -> C_Room: 3. Yêu cầu hiển thị \nchi tiết phòng
+activate C_Room
+C_Room --> C_Booking: 4. Thông tin chi tiết
+deactivate C_Room
+
+C_Booking -> C_Payment: 5. Yêu cầu thanh toán
+activate C_Payment
+C_Payment --> C_Booking: 6. Thông báo \nthành công/thất bại
+deactivate C_Payment
+
+C_Booking -> DB: 6. Lưu thông tin
+activate DB
+DB-->C_Booking: 7. Thông báo\nthành công/thất bại
+deactivate DB
+
+C_Booking --> BookingUI: Thông báo\n thành công/thất bại
+deactivate C_Booking
+BookingUI --> Customer:Hiển thị lên màn hình
+
+@enduml

@@ -1,0 +1,74 @@
+@startuml
+
+'--Actor declare section--'
+actor :Khách hàng: as Customer
+actor :Nhà kinh doanh: as Business 
+actor :Nhà quản trị: as Admin
+
+'--Use case declare section--'
+    'Genaral usecase'
+    'Customer usecase'
+        'base usecase'
+        (Đăng nhập) as DN 
+        (Đăng ký) as DK 
+        (Đặt chỗ) as DC
+        (Tìm kiếm địa điểm) as TKDD
+        (Danh sách yêu thích) as DSYT
+        (Nhắn tin) as NTin
+        (Bình luận) as BLuan
+        (Review địa điểm) as RV 
+        (Thay đổi thông tin) as TDTT
+        'include usecase'
+        (Thanh toán) as TT
+    'Business usecase'
+        'base usecase'
+        (Đăng nhập) as DN 
+        (Đăng ký) as DK 
+        (Thêm địa điểm) as TDD
+        (Cập nhật địa điểm) as CNDD
+        (Thống kê và báo cáo) as TKBC
+        (Nhắn tin) as NTin
+        (Bình luận) as BLuan
+
+    'Admin use case'
+        'base usecase'
+        (Đăng nhập) as DN
+        (Cập nhật thông tin khách hàng) as CNKH
+        (Thêm địa điểm) as TDD
+        (Cập nhật địa điểm) as CNDD
+        (Thêm nhà kinh doanh) as TNKD
+        (Cập nhật nhà kinh doanh) as CNNKD
+        (Thống kê và báo cáo) as TKBC
+
+'--Usecase section'
+    '--Customer'
+    Customer -->DN
+    Customer -->DK
+    Customer -->TKDD
+    Customer -up->DC
+    Customer -up->DSYT
+    Customer -->NTin
+    Customer -->BLuan
+    Customer -up->RV
+    Customer -->TDTT
+    DC .right->TT : <<include>>
+    '--Business--'
+    Business -up->DN
+    Business -up->DK
+    Business -up->TDD
+    Business -up->CNDD
+    Business -up->TKDD
+    Business -up->TKBC
+    Business -up->NTin
+    Business -up->BLuan
+    Business -up->TDTT
+
+    '--Admin--'
+    Admin -up->DN
+    Admin -up->TDD
+    Admin -up->CNDD
+    Admin -down-> CNKH
+    Admin -down->TNKD
+    Admin -down->CNNKD
+    Admin -up->TKBC
+@enduml

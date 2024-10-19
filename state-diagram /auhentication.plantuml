@@ -1,0 +1,27 @@
+@startuml
+title Xác thực
+[*] --> State1
+'State1 --> [*]
+State1 : Khởi tạo
+State2 : Đăng nhập thành công 
+State3 : Đăng nhập thất bại 
+State4 : Đăng ký thành công
+State6 : Lấy lại mật khẩu thành công
+State8 : Tồn tại tài khoản
+
+'flow1: đã có tài khoản, đăng nhập thành công
+State1 --> State8
+State8 --> State2
+State2 --> [*]
+
+'flow2: không có tài khoản, đăng ký thành công
+State1-->State4
+State4-->State8
+
+'flow3: đã có tài khoản, đăng nhập thất bại
+State8-->State3
+State3-->State6
+State6-->State8
+
+
+@enduml

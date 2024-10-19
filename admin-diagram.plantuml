@@ -1,0 +1,38 @@
+@startuml 
+actor Admin
+left to right direction
+(Quản lý tài khoản) as QLTK
+(Quản lý địa điểm) as QLDD
+(Quản lý nhà kinh doanh) as QLNKD
+(Thống kê và báo cáo) as TKBC
+(Quản lý loại hình) as QLLH
+
+Admin -->  QLTK
+QLTK ..> (Đăng nhập)
+QLTK ..> (Đăng ký)
+QLTK ..> (Lấy lại mật khẩu)
+
+Admin --> QLDD
+QLDD ..> (Kiểm duyệt địa điểm)
+QLDD ..> (Sửa địa điểm)
+QLDD ..> (Xóa địa điểm)
+
+Admin --> TKBC
+TKBC ..> (Xuất báo cáo)
+TKBC ..> (Thống kê của nhà kinh doanh)
+TKBC ..> (Thống kê của địa điểm)
+TKBC ..> (Thống kê của hệ thống)
+
+Admin --> QLNKD
+QLNKD ..> (Duyệt nhà kinh doanh)
+QLNKD ..> (Chỉnh sửa nhà kinh doanh)
+QLNKD ..> (Xóa nhà kinh doanh)
+
+Admin-->QLLH
+QLLH ..> (Thêm loại hình)
+QLLH ..> (Chỉnh sửa loại hình)
+QLLH ..> (Xóa loại hình)
+
+@enduml
+
+

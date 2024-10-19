@@ -1,0 +1,30 @@
+@startuml 
+actor :Nhà kinh doanh: as Business
+left to right direction
+(Quản lý tài khoản) as QLTK
+(Quản lý địa điểm) as QLDD
+(Thống kê và báo cáo) as TKBC
+(Chăm sóc khách hàng) as CSKH
+
+Business -->  QLTK
+QLTK ..> (Đăng nhập)
+QLTK ..> (Đăng ký)
+QLTK ..> (Lấy lại mật khẩu)
+
+Business --> QLDD
+QLDD ..> (Thêm địa điểm)
+QLDD ..> (Sửa địa điểm)
+QLDD ..> (Xóa địa điểm)
+
+Business --> TKBC
+TKBC ..> (Xuất báo cáo)
+TKBC ..> (Thống kê của nhà kinh doanh)
+TKBC ..> (Thống kê của địa điểm)
+
+Business --> CSKH
+CSKH ..> (Trả lời tin nhắn)
+CSKH ..> (Phản hồi đánh giá)
+
+@enduml
+
+

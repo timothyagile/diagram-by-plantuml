@@ -1,0 +1,21 @@
+@startuml
+title Hotel Search Sequence Diagram
+
+actor User
+participant "Giao diện tìm kiếm" as Search
+participant "Search controller" as Service
+participant "Database" as DB
+
+User -> Search : 1. Gửi yêu cầu tìm kiếm
+activate Search
+Search -> Service : 2. Chuyển đổi yêu cầu
+activate Service
+Service -> DB : 3. Truy vấn
+activate DB
+DB --> Service : 4. Gửi kết quả
+deactivate DB
+Service --> Search : 5. Gửi kết quả
+deactivate Service
+Search --> User : 6. Hiển thị \nlên màn hình
+
+@enduml
