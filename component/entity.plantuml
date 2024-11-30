@@ -1,0 +1,10 @@
+@startuml 
+hide empty members
+class ReviewController
+class Review
+class ReviewService
+
+ReviewController --> ReviewService 
+ReviewService -right-> Review
+
+@enduml

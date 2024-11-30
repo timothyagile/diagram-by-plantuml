@@ -1,0 +1,274 @@
+@startuml
+left to right direction
+
+class Message {
+  + id: bigint <<PK>>
+  + sourceId: bigint
+  + destinationId: bigint
+  + date: bigint
+  + messaging: bigint
+  + image: bigint
+
+  + void GetByUserId()
+  + void SendMessage() 
+}
+
+class Payment {
+  + id: bigint <<PK>>
+  + paymentMethodId: bigint
+  + amount: bigint
+  + status: bigint
+  + providerSessionId: bigint
+  + bookingId: bigint
+
+  + void GetAll()
+  + void Create()
+}
+
+class User {
+
+  + id: bigint <<PK>>
+  + userRole: bigint
+  + userEmail: nvarchar
+  + userName: nvarchar
+  + userPassword: nvarchar
+  + userPosition: geography
+  + userPhoneNumber: nchar
+  + userDateOfBirth: datetime2
+  + userAddress: nvarchar
+  + userAvatar: varchar
+  + providerType: bigint
+  + providerId: bigint
+
+  + void SignIn()
+  + void SignUp()
+  + void LogOut()
+}
+
+class UserCollection {
+  + id: bigint <<PK>>
+  + userId: bigint
+  + locationId: bigint
+
+  + void GetByUserID()
+  + void AddItem()
+  + void DeleteItem()
+}
+
+class Booking {
+  + id: bigint <<PK>>
+  + customerId: bigint
+  + dateBooking: bigint
+  + checkInDate: bigint
+  + checkOutDate: bigint
+  + totalPrice: bigint
+  + status: bigint
+
+  + void GetAll()
+  + void GetByCustomerId()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+class DetailBooking {
+  + id: bigint <<PK>>
+  + roomId: bigint 
+  + bookingId: bigint
+  + quantity: bigint
+  + void GetAll()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+class Room {
+  + roomId: bigint <<PK>>
+  + locationId: bigint
+  + name: bigint
+  + condition: bigint
+  + quantity: bigint
+  + rating: bigint
+  + pricePerNight: bigint
+  + capacity: int
+  + description: bigint
+  + area: bigint
+  + void GetByLocationId()
+  + void GetBySpecification()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+class PaymentMethod {
+  + id: bigint <<PK>>
+  + userId: bigint
+  + methodType: bigint
+  + providerName: bigint
+  + numberAccount: bigint
+  + void GetAll()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+' 'FIXME: Check logic
+' class Business {
+'   + id: bigint <<PK>>
+'   + owner: bigint
+'   + name: bigint
+'   + address: bigint
+'   + dateCreated: bigint
+'   + licenseId: bigint
+' }
+
+class Facility {
+  + id: bigint <<PK>>
+  + name: bigint
+  + void GetAll()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+
+class Location {
+  + locationId: bigint <<PK>>
+  + ownerId: bigint
+  + name: bigint
+  + description: bigint
+  + rating: bigint
+  + image: bigint
+  + address: bigint
+  + category: bigint
+  + dateCreated: bigint
+  + latitude: bigint
+  + longitude: bigint
+  + void GetAll()
+  + void GetByOwnerId()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+class Service {
+  + id: bigint <<PK>>
+  + name: nvarchar
+  + description: nvarchar
+  + price: bigint
+  + unit: nvarchar
+  + condition: nvarvar
+  + void GetAll()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+
+class ServiceUsage {
+  + id: bigint<<PK>>
+  + serviceId: bigint
+  + bookingId: bigint
+  + quantity: int
+  + totalPrice: bigint
+  + void GetAll()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+class Review {
+  + id: bigint <<PK>>
+  + userId: bigint
+  + destinationType: enum
+  + destinationId: bigint
+  + rating: bigint
+  + review: bigint
+  + void GetAll()
+  + void Create()
+  + void Update()
+  + void Delete()
+}
+
+'FIXME: Check logic
+' class Report {
+'     + id: bigint <<PK>>
+'     + string name
+'     + DateTime GeneratedDate
+'     + DateTime StartDate
+'     + DateTime EndDate
+'     + string GeneratedBy
+'   + void GetAll()
+'   + void Create()
+'   + void Update()
+'   + void Delete()
+' }
+
+'FIXME: Check logic
+class Invoice {
+    + id: bigint <<PK>>
+    + bookingId: bigint
+    + invoiceDate: DateTime
+    + tax: bigint
+    + totalPrice: bigint
+    + status: nvarvar
+    + void GetAll()
+    + void Create()
+    + void Update()
+    + void Delete()
+}
+
+'FIXME: Check logic 
+class InvoiceDetail {
+    + id: bigint <<PK>>
+    + invoiceId: bigint
+    + itemId: bigint 
+    + description: nvarchar
+    + amount: bigint 
+    + void GetAll()
+    + void Create()
+    + void Update()
+    + void Delete()
+}
+
+' class Parameter {
+'   + id: bigint <<PK>> 
+'   + name: varchar
+'   + type: varchar
+'   + value: varchar
+'   + state: varchar
+' }
+
+' class Category {
+'   + id: bigint <<PK>>
+' }
+
+' Cart "1" *-left- "1..*" CartItem
+' Cart "1"--* "1" User
+' CartItem "1"-- "1" Room
+
+UserCollection "1" o-- "1..*" Location : <<Chứa>>
+User "1" *-- "1" UserCollection : <<Tạo>>
+Message "1..*" --o "1" User : <<Gửi>>
+User "1" o-- "1..*" Review : <<Tạo>>
+User "1" *-- "1--*" Location : <<Đăng tải>>
+User "1" o-- "1" Booking : <<Tạo>>
+' Business "1" *-- "1..*" Location
+Review "1" --* "1" Room : <<Thuộc>>
+Review "1" --* "1" Location : <<Thuộc>>
+Booking "1" *-- "1..*" DetailBooking : <<Gồm>>
+DetailBooking "1" o-- "1" Room : <<Có>>
+Room "1..*" --* "1" Location : <<Thuộc>>
+Room "1" o-- "1..*" Facility : <<Gồm>>
+
+Invoice "1" *-- "1..*" InvoiceDetail : <<Gồm>>
+Invoice "1" --* "1" Booking : <<Thuộc>>
+'InvoiceDetail -- Service
+
+Service "1" --* "1..*" ServiceUsage : <<Sử dụng>>
+ServiceUsage "1" --* "1..*" Booking : <<Sử dụng>>
+
+Invoice "1" *-- "1" Payment : <<Thanh toán>>
+Payment "1..*" o-- "1" PaymentMethod : <<Có>>
+
+@enduml

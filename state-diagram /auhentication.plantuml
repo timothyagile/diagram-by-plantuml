@@ -1,27 +1,34 @@
 @startuml
 title Xác thực
+hide empty members
+state "Idle" as State1
+state "Authencating" as State2
+state "Success" as State3
+state "Failed" as State4
+
+state "Email sent" as State5 {
+    state "Pending" as State6
+    state "Confirmed" as State7
+    state "Changed" as State8
+
+    State4 --> State6 : Người dùng \ntạo lại mật khẩu
+    State6 -right-> State7 : Người dùng thay \nđổi mật khẩu
+    State7 --> State8 : Hệ thống kiểm tra
+}
+
+state "Created" as State9
 [*] --> State1
-'State1 --> [*]
-State1 : Khởi tạo
-State2 : Đăng nhập thành công 
-State3 : Đăng nhập thất bại 
-State4 : Đăng ký thành công
-State6 : Lấy lại mật khẩu thành công
-State8 : Tồn tại tài khoản
+State1 --> State2 : Xác nhận đăng nhập
+State2 --> State3 : Thông tin chính xác
+State2 --> State4 : Thông tin sai
+State4 -up-> State1 : Nhập lại thông tin
+State4 --> State9 : Người dùng tạo\n tài khoản mới
+State9 --> State1
+State3 --> [*]
 
-'flow1: đã có tài khoản, đăng nhập thành công
-State1 --> State8
-State8 --> State2
-State2 --> [*]
 
-'flow2: không có tài khoản, đăng ký thành công
-State1-->State4
-State4-->State8
 
-'flow3: đã có tài khoản, đăng nhập thất bại
-State8-->State3
-State3-->State6
-State6-->State8
+
 
 
 @enduml

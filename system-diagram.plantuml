@@ -9,41 +9,30 @@ actor :Nhà quản trị: as Admin
     'Genaral usecase'
     'Customer usecase'
         'base usecase'
-        (Đăng nhập) as DN 
-        (Đăng ký) as DK 
-        (Đặt chỗ) as DC
+        (Xác thực) as XT
         (Tìm kiếm địa điểm) as TKDD
         (Danh sách yêu thích) as DSYT
+        (Đặt chỗ) as DC
         (Nhắn tin) as NTin
         (Bình luận) as BLuan
         (Review địa điểm) as RV 
         (Thay đổi thông tin) as TDTT
-        'include usecase'
-        (Thanh toán) as TT
     'Business usecase'
         'base usecase'
-        (Đăng nhập) as DN 
-        (Đăng ký) as DK 
-        (Thêm địa điểm) as TDD
-        (Cập nhật địa điểm) as CNDD
+        (Quản lý địa điểm) as QLDD
         (Thống kê và báo cáo) as TKBC
         (Nhắn tin) as NTin
         (Bình luận) as BLuan
 
     'Admin use case'
         'base usecase'
-        (Đăng nhập) as DN
         (Cập nhật thông tin khách hàng) as CNKH
-        (Thêm địa điểm) as TDD
-        (Cập nhật địa điểm) as CNDD
-        (Thêm nhà kinh doanh) as TNKD
-        (Cập nhật nhà kinh doanh) as CNNKD
+        (Thêm nhà kinh doanh) as QLNKD
         (Thống kê và báo cáo) as TKBC
 
 '--Usecase section'
     '--Customer'
-    Customer -->DN
-    Customer -->DK
+    Customer --> XT
     Customer -->TKDD
     Customer -up->DC
     Customer -up->DSYT
@@ -51,12 +40,9 @@ actor :Nhà quản trị: as Admin
     Customer -->BLuan
     Customer -up->RV
     Customer -->TDTT
-    DC .right->TT : <<include>>
     '--Business--'
-    Business -up->DN
-    Business -up->DK
-    Business -up->TDD
-    Business -up->CNDD
+    Business -up->XT
+    Business -up->QLDD
     Business -up->TKDD
     Business -up->TKBC
     Business -up->NTin
@@ -64,11 +50,9 @@ actor :Nhà quản trị: as Admin
     Business -up->TDTT
 
     '--Admin--'
-    Admin -up->DN
-    Admin -up->TDD
-    Admin -up->CNDD
+    Admin -up-> XT
+    Admin -up->QLDD
     Admin -down-> CNKH
-    Admin -down->TNKD
-    Admin -down->CNNKD
+    Admin -down->QLNKD
     Admin -up->TKBC
 @enduml

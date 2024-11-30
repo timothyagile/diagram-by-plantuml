@@ -1,0 +1,7 @@
+@startuml security
+    hide empty members
+    class JWT
+    class SecurityConfig
+
+    SecurityConfig -> JWT
+@enduml

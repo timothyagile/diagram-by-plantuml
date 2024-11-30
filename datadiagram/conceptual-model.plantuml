@@ -1,0 +1,95 @@
+@startuml
+class Message {
+
+}
+
+class Transaction {
+
+}
+
+class User {
+}
+
+class UserCollection {
+}
+
+class Booking {
+
+}
+
+class DetailBooking {
+
+}
+
+class Room {
+
+}
+
+class PaymentMethod {
+
+}
+
+class Business {
+
+}
+
+class Facility {
+
+}
+
+class Location {
+}
+
+class Cart {
+
+}
+
+class CartItem {
+
+}
+
+class Review {
+
+}
+
+
+'Assocication: Tong quat
+'Composition:
+' Trong phan thuoc tinh cua A co chua B 
+' va khi A bi xoa thi B khong the ton tai
+
+' Agreration
+' Trong phan thuoc tinh cua A co chua B 
+' va khi A bi xoa thi B van co the ton tai doc lap
+
+hide empty members
+Cart *-- CartItem
+Cart --*  User
+CartItem -- Room
+UserCollection o--  Location
+User *--  UserCollection
+Message --o  User
+User  o--  Review
+User *--  Business
+Business  *--  Location
+Review  --*  Room
+Review  --*  Location
+User o-- Booking
+Booking *--  DetailBooking
+Booking  o--  Transaction
+DetailBooking o-- Room
+Room --*  Location
+Transaction  o-- PaymentMethod
+Room o--  Facility
+User <|-- Customer
+User <|-- Admin
+User <|-- Bussiness
+
+Location <|-- Hotel
+Location <|-- Restaurant
+
+PaymentMethod <|-- Cash
+PaymentMethod <|-- Banking
+
+
+@enduml

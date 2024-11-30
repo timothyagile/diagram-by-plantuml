@@ -1,0 +1,43 @@
+@startuml cusweb
+title Client
+hide empty members
+
+' class Authentication
+
+' Authentication -right-> Customer
+' Authentication -up-> Admin
+' package Customer {
+'     class HomeScreen
+'     class DetailLocationScreen
+'     class BookingScreen
+'     class PaymentScreen
+'     class MessageScreen
+'     class ProfileScreen
+
+'     HomeScreen --> DetailLocationScreen
+'     HomeScreen --> BookingScreen
+'     HomeScreen --> MessageScreen
+'     HomeScreen --> ProfileScreen
+'     BookingScreen --> PaymentScreen
+' }
+
+package Admin {
+    class ad_HomeScreen
+    class ad_AllLocationScreen
+    class ad_AddLocationScreen
+    class ad_DetailLocationScreen
+    class ad_AllBookingScreen
+    class ad_MessageScreen
+    class ad_ProfileScreen
+    class ad_Report
+
+    ad_AllLocationScreen --> ad_DetailLocationScreen
+    ad_HomeScreen --> ad_AllLocationScreen
+    ad_AllLocationScreen --> ad_AddLocationScreen
+    ad_HomeScreen --> ad_AllBookingScreen
+    ad_HomeScreen --> ad_MessageScreen
+    ad_HomeScreen --> ad_ProfileScreen
+    ad_HomeScreen --> ad_Report
+}
+
+@enduml

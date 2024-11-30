@@ -1,0 +1,41 @@
+@startuml main
+
+package "Client" as CL {
+    [ReactJS]
+}
+
+[SecurityConfig] as SC
+
+[PaymentGateway] as PG
+
+[MapService] as MS
+
+database "DatabaseServer" as DS {
+    [MongoDB]
+}
+
+package "API" as API {
+    [RestfulAPI] as RA
+    [NodeJS]
+}
+
+package "Server" as SV{
+    [Routes] as R
+    [Controller] as C
+    [Model] as M
+    [Middleware] as Mi
+    [Services] as S 
+    R --> Mi
+    R --> C
+    C --> M 
+    C --> S
+    M <-left-> DS
+}
+SV -right-> SC
+API --> R
+CL <--> RA
+CL <--> PG
+CL <--> MS
+
+
+@enduml

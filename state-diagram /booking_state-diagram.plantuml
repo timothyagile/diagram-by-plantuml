@@ -1,19 +1,38 @@
 @startuml
 title Hotel Room Booking State Diagram
 
-[*] --> Phòng_có_sẵn
+state "Idle" as State1
+state "Pending" as State2
+state "Failed" as State13
+state "Success" as State3
+state "Sent cancellation request" as State4 {
+    state "Expired" as State10
+    state "Not yet expired" as State14
+    state "Payment pending" as State11
+    state "Payment success" as State12
+    state "Cancelled" as State15
+    State10 --> State11
+    State11 -right-> State12
+    State12 --> State15
+    State14 -right-> State15
+}
+state "Checked in" as State5 {
+    state "Payment pending" as State6
+    state "Payment success" as State7
+    state "Reviewed" as State8
+    State6 --> State7
+    State7 -right-> State8
+}
 
-Phòng_có_sẵn --> Đặt_phòng : Đặt phòng
-Đặt_phòng -right-> Đã_thanh_toán : Thực hiện thanh toán
-Đã_thanh_toán --> [*]
 
-Đặt_phòng --> Hủy_phòng : Hủy đặt phòng
-Hủy_phòng --> [*]
-
-Đã_thanh_toán --> Đã_nhận_phòng : Check In
-Đã_nhận_phòng --> [*]
-
-Đã_nhận_phòng --> CheckedOut : Check Out
-CheckedOut --> [*]
+[*] --> State1
+State1 --> State2: Nhập thông tin
+State2 --> State3: Thông tin đúng
+State2 --> State13: Thông tin sai
+State13 --> State1: Nhập lại thông tin
+State3 --> State4: Khách hủy đặt chỗ
+State3 --> State5: Khách đến check in
+State4 --> [*]
+State5 --> [*]
 
 @enduml

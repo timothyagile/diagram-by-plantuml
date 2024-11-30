@@ -5,33 +5,32 @@ left to right direction
 (Quản lý địa điểm) as QLDD
 (Quản lý nhà kinh doanh) as QLNKD
 (Thống kê và báo cáo) as TKBC
-(Quản lý loại hình) as QLLH
 
 Admin -->  QLTK
 QLTK ..> (Đăng nhập)
-QLTK ..> (Đăng ký)
-QLTK ..> (Lấy lại mật khẩu)
 
 Admin --> QLDD
 QLDD ..> (Kiểm duyệt địa điểm)
-QLDD ..> (Sửa địa điểm)
+(Kiểm duyệt địa điểm) <.. (Gửi email đến NKD): <<include>>
+QLDD ..> (Yêu cầu thay đổi)
+(Yêu cầu thay đổi) <.. (Gửi email đến NKD): <<include>>
 QLDD ..> (Xóa địa điểm)
+(Xóa địa điểm) <.. (Gửi email đến NKD): <<include>>
 
 Admin --> TKBC
 TKBC ..> (Xuất báo cáo)
+(Xuất báo cáo) <.. (Chọn khoảng \nthời gian cần xuất) : <<include>>
 TKBC ..> (Thống kê của nhà kinh doanh)
 TKBC ..> (Thống kê của địa điểm)
 TKBC ..> (Thống kê của hệ thống)
 
 Admin --> QLNKD
 QLNKD ..> (Duyệt nhà kinh doanh)
-QLNKD ..> (Chỉnh sửa nhà kinh doanh)
+(Duyệt nhà kinh doanh) <.. (Gửi email đến NKD): <<include>>
+QLNKD ..> (Yêu cầu điều chỉnh)
+(Yêu cầu điều chỉnh) <.. (Gửi email đến NKD): <<include>>
 QLNKD ..> (Xóa nhà kinh doanh)
-
-Admin-->QLLH
-QLLH ..> (Thêm loại hình)
-QLLH ..> (Chỉnh sửa loại hình)
-QLLH ..> (Xóa loại hình)
+(Xóa nhà kinh doanh) <.. (Gửi email đến NKD): <<include>>
 
 @enduml
 

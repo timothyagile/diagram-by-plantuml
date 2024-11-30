@@ -4,17 +4,22 @@ title Authentication Sequence Diagram
 actor "Người dùng" as User
 participant "Giao diện đăng nhập" as UI
 participant "Authentication" as Auth
+participant "Account entity" as AE
 participant "Database" as DB
 
 User -> UI : 1. Yêu cầu đăng nhập
 activate UI
 UI -> Auth : 2. Chuyển đổi yêu cầu
 activate Auth 
-Auth -> DB : 3. Kiểm tra thông tin
+Auth -> AE : 3. Yêu cầu hashing
+activate AE
+AE -> DB : 4. Kiểm tra thông tin
 activate DB 
-DB --> Auth : 4. Thông báo \nthành công/thất bại
+DB --> AE : 5. Thông báo \nthành công/thất bại
 deactivate DB
-Auth --> UI: 5. Phản hồi \nthành công/thất bại
+AE --> Auth: 6. Thông báo \nthành công/thất bại
+deactivate AE
+Auth --> UI: 6. Phản hồi \nthành công/thất bại
 deactivate Auth
 UI --> User : 6. Hiển thị thông báo
 deactivate UI

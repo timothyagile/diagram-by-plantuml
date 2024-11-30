@@ -1,0 +1,34 @@
+@startuml main
+
+[Client] as CL
+[SecurityConfig] as SC
+[PaymentGateway] as PG
+[MapService] as MS
+[DatabaseServer] as DS
+[API] as API
+[AuthService] as AS
+[LocationService] as LS
+[RoomService] as RS
+[BookingService] as BS
+[MessageService] as MS
+[ReviewService] as RvS
+
+CL --> API
+API --> DS
+API --> AS
+API --> LS
+API --> RS
+API --> BS
+API --> MS
+API --> RvS
+
+DS --> SC
+AS --> SC
+LS --> SC
+RS --> SC
+BS --> SC
+MS --> SC
+RvS --> SC
+
+CL --> PG
+@enduml
